@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">CarboNex</div>
+    <div class="content">
+      <form action="file:///C:/Users/u724619/OneDrive%20-%20Finastra/Desktop/carbonx/table.html">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Principal</span>
+            <input type="number" placeholder="Enter Principal" required id="principal_amt">
+          </div>
+          <div class="input-box">
+            <span class="details">Interest Rate</span>
+            <input type="number" placeholder="Enter Reference Rate (9)" required disabled>
+          </div>
+          <div class="input-box">
+            <span class="details">Spread</span>
+            <input type="number" placeholder="Enter Spread (0.04)" required disabled>
+          </div>
+          <div class="input-box">
+            <span class="details">Carbon Spread</span>
+            <input type="number" placeholder="Enter Carbon Spread (-0.0005)" required disabled>
+          </div>
+          <div class="input-box">
+            <span class="details">Schedule Date</span>
+            <input type="text" placeholder="24 June 2019" disabled>
+          </div>
+          <div class="input-box">
+            <span class="details">Term</span>
+            <input type="text" placeholder="24 Month" disabled>
+          </div>
+        </div>
+        <!-- <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <span class="gender-title">Term</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">24 M</span>
+          </label>
+          </div>
+        </div> -->
+        <div class="button" onclick="getInputValue()">
+          <input type="submit" value="Calculate">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+<script>  
+    //JavaScript to illustrate JSON.parse() method.  
+    const j = [
+        {
+            "DATE": "24-Jun-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "0",
+            "Interest_amt": "854418.49"
+        },
+        {
+            "DATE": "24-Jul-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "30",
+            "Interest_amt": "854418.49"
+        },
+        {
+            "DATE": "26-Aug-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "33",
+            "Interest_amt": "939860.34"
+        },
+        {
+            "DATE": "24-Sep-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "29",
+            "Interest_amt": "825937.88"
+        },
+        {
+            "DATE": "24-Oct-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "30",
+            "Interest_amt": "854418.49"
+        },
+        {
+            "DATE": "25-Nov-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "32",
+            "Interest_amt": "911379.73"
+        },
+        {
+            "DATE": "24-Dec-19",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "29",
+            "Interest_amt": "825937.88"
+        },
+        {
+            "DATE": "24-Jan-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "31",
+            "Interest_amt": "882899.11"
+        },
+        {
+            "DATE": "24-Feb-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "31",
+            "Interest_amt": "882899.11"
+        },
+        {
+            "DATE": "24-Mar-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "29",
+            "Interest_amt": "825937.88"
+        },
+        {
+            "DATE": "24-Apr-20",
+            "RHIS": "9",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.0395",
+            "No_of_days": "31",
+            "Interest_amt": "882899.11"
+        },
+        {
+            "DATE": "25-May-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "31",
+            "Interest_amt": "941501.85"
+        },
+        {
+            "DATE": "24-Jun-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "24-Jul-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "24-Aug-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "31",
+            "Interest_amt": "941501.85"
+        },
+        {
+            "DATE": "24-Sep-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "31",
+            "Interest_amt": "941501.85"
+        },
+        {
+            "DATE": "26-Oct-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "32",
+            "Interest_amt": "971872.88"
+        },
+        {
+            "DATE": "24-Nov-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "29",
+            "Interest_amt": "880759.79"
+        },
+        {
+            "DATE": "24-Dec-20",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "25-Jan-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "32",
+            "Interest_amt": "971872.88"
+        },
+        {
+            "DATE": "24-Feb-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "30",
+            "Interest_amt": "911130.82"
+        },
+        {
+            "DATE": "24-Mar-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "28",
+            "Interest_amt": "850388.77"
+        },
+        {
+            "DATE": "26-Apr-21",
+            "RHIS": "9.6",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.6395",
+            "No_of_days": "33",
+            "Interest_amt": "1002243.9"
+        },
+        {
+            "DATE": "24-May-21",
+            "RHIS": "9.75",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.7895",
+            "No_of_days": "28",
+            "Interest_amt": "863621.64"
+        },
+        {
+            "DATE": "24-Jun-21",
+            "RHIS": "9.75",
+            "Spread_Rate": "0.0395",
+            "Net_Rate": "9.7895",
+            "No_of_days": "31",
+            "Interest_amt": "956152.53"
+        }
+];   
+var response=j;
+// var amount=123432;
+var net_rate=0.00000;
+var text="";
+//     // console.log(j) 
+//     for (let i = 0; i < j.length; i++) {
+//         net_rate=parseFloat(j[i].RHIS)+parseFloat(j[i].Spread_Rate);
+//         response[i].Net_Rate=net_rate;
+//         net_amount=(parseFloat(amount)*parseInt(j[i].No_of_days)*net_rate)/365;
+//         response[i].Interest_amt=net_amount.toFixed(2);
+// }
+
+function getInputValue(){
+    
+    var amount = parseFloat(document.getElementById("principal_amt").value);
+    for (let i = 0; i < j.length; i++) {
+        net_rate=parseFloat(j[i].RHIS)+parseFloat(j[i].Spread_Rate);
+        response[i].Net_Rate=net_rate;
+        net_amount=(parseFloat(amount)*parseInt(j[i].No_of_days)*net_rate)/365;
+        response[i].Interest_amt=net_amount.toFixed(2);
+    }
+    console.log(response);
+    sessionStorage.setItem("list_data_key",  JSON.stringify(response));
+}
+function storeUserDataInSession(userData) {
+    var userObjectString = JSON.stringify(userData);
+    window.sessionStorage.setItem('userObject',userData);
+}  
+
+</script>
+</html>
